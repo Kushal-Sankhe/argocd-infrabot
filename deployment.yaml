@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: infrabot
+  name: infraot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: infrabot
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: infrabot
+    spec:
+      containers:
+      - image: kushalsankhe/frontend:10
+        name: infrabot
+        resources: {}
+      - image: kushalsankhe/backend:10
+        name: infrabot
+        resources: {}        
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: infrabot
