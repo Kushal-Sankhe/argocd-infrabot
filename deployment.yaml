@@ -18,10 +18,10 @@ spec:
         app: infrabot
     spec:
       containers:
-      - image: kushalsankhe/frontend:6
+      - image: kushalsankhe/frontend:7
         name: frontend-container  # Unique name for the frontend container
         resources: {}
-      - image: kushalsankhe/backend:6
+      - image: kushalsankhe/backend:7
         name: backend-container  # Unique name for the backend container
         resources: {}        
 status: {}
